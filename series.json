@@ -1,0 +1,73 @@
+{
+    "series" : {
+        "s1" : {
+            "id" : "s1",
+            "year" : 2018,
+            "title" : "Rascal Does Not Dream of Bunny Girl Senpai",
+            "plot" : "The rare and inexplicable Puberty Syndrome is thought of as a myth. It is a rare disease which only affects teenagers, and its symptoms are so supernatural that hardly anyone recognizes it as a legitimate occurrence. However, high school student Sakuta Azusagawa knows from personal experience that it is very much real, and happens to be quite prevalent in his school.",
+            "cover" : "https://cdn.myanimelist.net/images/anime/1301/93586l.jpg",
+            "episodes" : {
+                "1" : {
+                    "id" : "1",
+                    "date" : "2018-10-04",
+                    "title" : "My Senpai is a Bunny Girl",
+                    "plot" : "Sakuta Azusagawa, a second-year student at Minegahara High School, encounters a bunny girl one day at the library. She turns out to be Mai Sakurajima, a third-year student at Sakuta's high school and a nationally famous actress, who is currently on hiatus from acting.",
+                    "rating" : 8.8
+                },
+                "2" : {
+                    "id" : "2",
+                    "date" : "2018-10-11",
+                    "title" : "On First Dates, Trouble Is Essential",
+                    "plot" : "Sakuta continues to investigate the cause of Mai\\’s puberty syndrome. Somehow, he also ends up scheduling a date with her. On his way to meet up with Mai at Fujisawa Station, he comes across a lost girl, who he tries to help out.",
+                    "rating" : 9.5
+                },
+                "3" : {
+                    "id" : "3",
+                    "date" : "2018-10-18",
+                    "title" : "The World Without You",
+                    "plot" : "Even after leaving Fujisawa and arriving to Ogaki, Sakura and Mai had still not encountered one person that had any recollection or memory of Mai Sakurajima” encountered one person that had any recollection or memory of Mai Sakurajima.",
+                    "rating" : 9.4
+                }
+            }
+        },
+        "s2" : {
+            "id" : "s2",
+            "year" : 2015,
+            "title" : "Charlotte",
+            "plot" : "If not for his ability to take over people's mind and body, Yuu Otosaka would be an ordinary high school student. Though it only lasts for five seconds at a time, Yuu's mysterious power allowed him to cheat his way to the top of his class and enter a prestigious high school, where he continues his dishonest acts.",
+            "cover" : "https://cdn.myanimelist.net/images/anime/12/74683l.jpg",
+            "episodes" : {
+                "1" : {
+                    "id" : "1",
+                    "date" : "2015-07-05",
+                    "title" : "I Think About Others",
+                    "plot" : "Yuu Otosaka finds he has the ability to possess anyone for five seconds. He uses it for personal gain, but an an intrepid girl with powers of her own, Nao Tomori, confronts him and tries to get him to use his ability for good.",
+                    "rating" : 8.6
+                },
+                "2" : {
+                    "id" : "2",
+                    "date" : "2015-07-12",
+                    "title" : "Melody of Despair",
+                    "plot" : "Yuu is thrown into a position on the student council and starts his job of teaming up alongside Nao to track down other kids with powers.",
+                    "rating" : 8.8
+                }
+            }
+        },
+        "s3" : {
+            "id" : "s3",
+            "year" : 2009,
+            "title" : "K-On!",
+            "plot" : "A fresh high school year always means much to come, and one of those things is joining a club. Being in a dilemma about which club to join, Yui Hirasawa stumbles upon and applies for the Light Music Club, which she misinterprets to be about playing simple instruments, such as castanets. Unable to play an instrument, she decides to visit to apologize and quit.",
+            "cover" : "https://cdn.myanimelist.net/images/anime/1724/99293l.jpg",
+            "episodes" : {
+                "1" : {
+                    "id" : "1",
+                    "date" : "2009-04-03",
+                    "title" : "Disband the Club!",
+                    "plot" : "Yui Hirasawa has just started her high school life, but does not know if she should join a club or not. Meanwhile, Ritsu Tainaka attempts to drag her friend Mio Akiyama to join the light music club, only to discover it will disbanded if it doesn't recruit four members.",
+                    "rating" : 8.8
+                }
+            }
+        }
+    }
+}
