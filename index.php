@@ -1,6 +1,5 @@
 <?php
     include('seriesstorage.php');
-
     $series_storage = new SeriesStorage();
 ?>
 
@@ -25,9 +24,9 @@
                 <th>Epizódok száma</th>
                 <th>Legutóbbi epizód dátuma</th>
             </tr>
-            <?php foreach ($series_storage->findAll()["series"] as $listing): ?>
+            <?php foreach ($series_storage->findAll() as $listing): ?>
                 <tr>
-                    <td><?= $listing["cover"] ?></td>
+                    <td><img src="<?= $listing["cover"] ?>" alt="<?= $listing["title"] ?>"></td>
                     <td><a href="./details.php?id=<?= $listing["id"] ?>"><?= $listing["title"] ?></a></td>
                     <td><?= count($listing["episodes"]) ?></td>
                     <td><?= $listing["episodes"][count($listing["episodes"])]["date"] ?></td>
