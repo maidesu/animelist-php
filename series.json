@@ -1,6 +1,6 @@
 {
-    "s1": {
-        "id": "s1",
+    "1": {
+        "id": "1",
         "year": 2018,
         "title": "Rascal Does Not Dream of Bunny Girl Senpai",
         "plot": "The rare and inexplicable Puberty Syndrome is thought of as a myth. It is a rare disease which only affects teenagers, and its symptoms are so supernatural that hardly anyone recognizes it as a legitimate occurrence. However, high school student Sakuta Azusagawa knows from personal experience that it is very much real, and happens to be quite prevalent in his school.",
@@ -29,8 +29,8 @@
             }
         }
     },
-    "s2": {
-        "id": "s2",
+    "2": {
+        "id": "2",
         "year": 2015,
         "title": "Charlotte",
         "plot": "If not for his ability to take over people's mind and body, Yuu Otosaka would be an ordinary high school student. Though it only lasts for five seconds at a time, Yuu's mysterious power allowed him to cheat his way to the top of his class and enter a prestigious high school, where he continues his dishonest acts.",
@@ -52,8 +52,8 @@
             }
         }
     },
-    "s3": {
-        "id": "s3",
+    "3": {
+        "id": "3",
         "year": 2009,
         "title": "K-On!",
         "plot": "A fresh high school year always means much to come, and one of those things is joining a club. Being in a dilemma about which club to join, Yui Hirasawa stumbles upon and applies for the Light Music Club, which she misinterprets to be about playing simple instruments, such as castanets. Unable to play an instrument, she decides to visit to apologize and quit.",

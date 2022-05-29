@@ -1,6 +1,6 @@
 {
-    "u1" : {
-        "id" : "u1",
+    "1" : {
+        "id" : "1",
         "username" : "admin",
         "email" : "actualadmin@actualelte.hu",
         "password" : "admin",
@@ -9,8 +9,8 @@
         },
         "isadmin" : 1
     },
-    "u2" : {
-        "id" : "u2",
+    "2" : {
+        "id" : "2",
         "username" : "user1",
         "email" : "user1@outgoggle.com",
         "password" : "user321",
