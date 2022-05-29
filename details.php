@@ -46,14 +46,16 @@
                 <th>Dátum</th>
                 <th>Leírás</th>
                 <th>Értékelés</th>
+                <th>Megnéztem</th>
             </tr>
             <?php foreach ($series["episodes"] as $i=>$details): ?>
                 <tr>
-                    <td><?= $i ?></td>
+                    <td <?php if(true) echo 'class="viewed"' /* Get condition from users */?>><?= $i ?></td>
                     <td><?= $details["title"] ?></td>
                     <td><?= $details["date"] ?></td>
                     <td><?= $details["plot"] ?></td>
                     <td><?= $details["rating"] ?></td>
+                    <td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
