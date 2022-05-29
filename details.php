@@ -46,11 +46,11 @@
                 <th>Dátum</th>
                 <th>Leírás</th>
                 <th>Értékelés</th>
-                <th>Megnéztem</th>
+                <th>Megnéztem</th> <?php /* Enable on login */ ?>
             </tr>
             <?php foreach ($series["episodes"] as $i=>$details): ?>
                 <tr>
-                    <td <?php if(true) echo 'class="viewed"' /* Get condition from users */?>><?= $i ?></td>
+                    <td <?php if(true) echo 'class="viewed"' /* Get condition from users */ ?>><?= $i ?></td>
                     <td><?= $details["title"] ?></td>
                     <td><?= $details["date"] ?></td>
                     <td><?= $details["plot"] ?></td>

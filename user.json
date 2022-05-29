@@ -1,22 +1,22 @@
 {
-    "1" : {
-        "id" : "1",
-        "username" : "admin",
-        "email" : "actualadmin@actualelte.hu",
-        "password" : "admin",
-        "watched" : {
-            "s1" : "2"
+    "1": {
+        "id": "1",
+        "username": "admin",
+        "email": "actualadmin@actualelte.hu",
+        "password": "admin",
+        "watched": {
+            "1": "2"
         },
-        "isadmin" : 1
+        "isadmin": 1
     },
-    "2" : {
-        "id" : "2",
-        "username" : "user1",
-        "email" : "user1@outgoggle.com",
-        "password" : "user321",
-        "watched" : {
-            "s1" : "1"
+    "2": {
+        "id": "2",
+        "username": "user1",
+        "email": "user1@outgoggle.com",
+        "password": "user321",
+        "watched": {
+            "1": "1"
         },
-        "isadmin" : 0
+        "isadmin": 0
     }
 }

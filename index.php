@@ -1,5 +1,7 @@
 <?php
     include('seriesstorage.php');
+
+    session_start();
     $series_storage = new SeriesStorage();
 ?>
 
@@ -13,7 +15,16 @@
     <title>(Not) my anime list</title>
 </head>
 <body>
-    <div>
+    <div class="header">
+    <?php if (isset($_SESSION["user"])): ?>
+        <div id="header-user">Logged in as <?= $_SESSION["user"]["username"] ?></div>
+        <div id="header-logout"><a href="./logout.php">Logout</a></div>
+    <?php else : ?>
+        <div id="header-login"><a href="./login.php">Login</a></div>
+        <div id="header-register"><a href="./register.php">Register</a></div>
+    <?php endif; ?>
+    </div>
+    <div class="main">
         <h1>(Nem) Az Én Anime Listám</h1>
         <p>Ez nem egy az 'Az Én Anime Listám' mintájára készült anime sorozatkövető weboldal.</p>
 
