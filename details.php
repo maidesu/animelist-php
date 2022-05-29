@@ -56,7 +56,7 @@
 
     $errors = [];
     $data = [];
-    if (count($_POST) > 0) {
+    if (count($_POST) > 0 && isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) {
       if (validate($_POST, $data, $errors)) {
           if (episode_exists($series_storage, $data['title'])) {
             $errors['global'] = "Episode already exists";
@@ -131,6 +131,7 @@
                         ($i === 1 && !isset($_SESSION["user"]["watched"][$_GET["id"]]))) :?><td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td><?php endif; ?>
                 </tr>
             <?php endforeach; ?>
+            <?php if (isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) :?>
             <tr>
                 <form action="" method="post" novalidate>
                     <td>
@@ -171,6 +172,7 @@
                     <p><span class="error"><?= $errors['global'] ?></span></p>
                 <?php endif; ?>
             </tr>
+            <?php endif; ?>
         </table>
     </div>
 </body>
