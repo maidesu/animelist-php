@@ -8,7 +8,7 @@
     if (!isset($_GET["id"]) || $_GET["id"] === "" || is_null($series_storage->findById($_GET["id"]))) { http_response_code(404); return; }
     $series = $series_storage->findById($_GET["id"]);
 
-    if (isset($_GET["viewed"]) && is_numeric($_GET["viewed"])) {
+    if (isset($_SESSION["user"]) && isset($_GET["viewed"]) && is_numeric($_GET["viewed"])) {
         $_SESSION["user"]["watched"][$_GET["id"]] = $_GET["viewed"];
         $user_storage->update($_SESSION["user"]["id"], $_SESSION["user"]);
     }
@@ -125,10 +125,15 @@
                     <td><?= $details["date"] ?></td>
                     <td><?= $details["plot"] ?></td>
                     <td><?= $details["rating"] ?></td>
-                    <?php if (isset($_SESSION["user"]) &&
-                        isset($_SESSION["user"]["watched"][$_GET["id"]]) &&
-                        $i === $_SESSION["user"]["watched"][$_GET["id"]] + 1 ||
-                        ($i === 1 && !isset($_SESSION["user"]["watched"][$_GET["id"]]))) :?><td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td><?php endif; ?>
+                    <?php
+                        if (isset($_SESSION["user"]) && // Valid user
+                        isset($_SESSION["user"]["watched"][$_GET["id"]]) && // Has the show indexed in user.json
+                        ($i === $_SESSION["user"]["watched"][$_GET["id"]] + 1) || // Place button next to first unwatched episode
+                        (isset($_SESSION["user"]) && !isset($_SESSION["user"]["watched"][$_GET["id"]]) && $i === 1) // User is valid, but hasn't indexed show yet -> button to first episode
+                        ) :
+                    ?>
+                        <td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td>
+                    <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
             <?php if (isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) :?>
