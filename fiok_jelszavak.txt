@@ -1,0 +1,5 @@
+USER:PASSWORD
+
+admin:admin
+user1:user321
+mai:maid

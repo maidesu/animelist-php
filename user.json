@@ -21,5 +21,13 @@
         },
         "isAdmin": 0,
         "id": "62939ed257737"
+    },
+    "6293a294889a1": {
+        "username": "mai",
+        "email": "maid@maidcafe.ru",
+        "password": "$2y$10$JOnhWIWgRKCSOjp74odx0eFWKUd.s3WIfsMOOxzoEJwAPVffAJ5mK",
+        "watched": [],
+        "isAdmin": 0,
+        "id": "6293a294889a1"
     }
 }
