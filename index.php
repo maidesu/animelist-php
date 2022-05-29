@@ -17,11 +17,11 @@
 <body>
     <div class="header">
     <?php if (isset($_SESSION["user"])): ?>
-        <div id="header-user">Logged in as <?= $_SESSION["user"]["username"] ?></div>
-        <div id="header-logout"><a href="./logout.php">Logout</a></div>
+        <div id="header-user">Bejelentkezett, mint <?= $_SESSION["user"]["username"] ?></div>
+        <div id="header-logout"><a href="./logout.php">Kijelentkezés</a></div>
     <?php else : ?>
-        <div id="header-login"><a href="./login.php">Login</a></div>
-        <div id="header-register"><a href="./register.php">Register</a></div>
+        <div id="header-login"><a href="./login.php">Bejelentkezés</a></div>
+        <div id="header-register"><a href="./register.php">Regisztráció</a></div>
     <?php endif; ?>
     </div>
     <div class="main">
@@ -44,9 +44,27 @@
                 </tr>
             <?php endforeach; ?>
         </table>
-    </div>
 
-    <!-- PHP BEJELENTKEZETT FELHASZNÁLÓ LEGALÁBB EGY MEGTEKINTETT LISTA -->
+        <?php if (isset($_SESSION["user"])) :?>
+            <h2>Nézett sorozataim</h2>
+
+            <table>
+                <tr>
+                    <th>Cím</th>
+                    <th>Megnézett epizódok</th>
+                </tr>
+                <?php foreach ($series_storage->findMany(
+                        function($item) { return isset($_SESSION["user"]["watched"][$item["id"]]) &&
+                            ($_SESSION["user"]["watched"][$item["id"]] > 0); }
+                    ) as $watching): ?>
+                    <tr>
+                        <td><?= $watching["title"] ?></td>
+                        <td><?= $_SESSION["user"]["watched"][$watching["id"]] ?>/<?= count($watching["episodes"]) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+    </div>
 
     <!-- PHP CSAK ADMIN FORM HOZZÁADÁSHOZ -->
     <form action="" novalidate>

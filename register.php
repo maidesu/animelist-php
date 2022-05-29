@@ -97,7 +97,7 @@
     <?php endif; ?>
   </div>
   <div>
-    <button type="submit">Register</button>
+    <button type="submit">Regisztráció</button>
   </div>
 </form>
 </body>
