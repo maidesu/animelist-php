@@ -9,7 +9,9 @@
 
     function validate($post, &$data, &$errors) {
       if (!isset($post["username"]) || $post["username"] == "") $errors['username'] = "Nincs megadva felhasználónév!";
-      if (!isset($post["email"]) || $post["email"] == "") $errors['email'] = "Nincs megadva Email cím!";
+
+      if (!isset($post["email"]) || $post["email"] == "") $errors['email'] = "Nincs megadva email cím!";
+      else if (!filter_var($post["email"], FILTER_VALIDATE_EMAIL)) $errors['email'] = "Az email cím érvénytelen!";
 
       if (!isset($post["password"]) || $post["password"] == "") $errors['password'] = "Nincs megadva jelszó!";
       else if (!isset($post["password_rp"]) || $post["password_rp"] == "") $errors['password_rp'] = "Nincs megadva még egyszer jelszó!";
