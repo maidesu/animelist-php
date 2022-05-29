@@ -15,7 +15,8 @@
         "email": "user1@outgoggle.com",
         "password": "user321",
         "watched": {
-            "1": "1"
+            "1": "1",
+            "2": "2"
         },
         "isadmin": 0
     }

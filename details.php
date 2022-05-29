@@ -1,5 +1,7 @@
 <?php
     include('seriesstorage.php');
+
+    session_start();
     $series_storage = new SeriesStorage();
 
     if (!isset($_GET["id"]) || $_GET["id"] === "" || is_null($series_storage->findById($_GET["id"]))) { http_response_code(404); return; }
@@ -46,16 +48,18 @@
                 <th>Dátum</th>
                 <th>Leírás</th>
                 <th>Értékelés</th>
-                <th>Megnéztem</th> <?php /* Enable on login */ ?>
+                <?php if (isset($_SESSION["user"])) :?><th>Megnéztem</th><?php endif; ?>
             </tr>
             <?php foreach ($series["episodes"] as $i=>$details): ?>
                 <tr>
-                    <td <?php if(true) echo 'class="viewed"' /* Get condition from users */ ?>><?= $i ?></td>
+                    <td <?php if(isset($_SESSION["user"]) &&
+                        isset($_SESSION["user"]["watched"][$_GET["id"]]) &&
+                        $i <= $_SESSION["user"]["watched"][$_GET["id"]]) echo 'class="viewed"'; ?>><?= $i ?></td>
                     <td><?= $details["title"] ?></td>
                     <td><?= $details["date"] ?></td>
                     <td><?= $details["plot"] ?></td>
                     <td><?= $details["rating"] ?></td>
-                    <td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td>
+                    <?php if (isset($_SESSION["user"])) :?><td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td><?php endif; ?>
                 </tr>
             <?php endforeach; ?>
         </table>
