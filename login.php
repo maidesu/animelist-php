@@ -8,8 +8,8 @@
     }
 
     function validate($post, &$data, &$errors) {
-      if (!isset($post["password"]) || $post["password"] == "") $errors['global'] = "Nincs megadva jelszó!";
-      if (!isset($post["username"]) || $post["username"] == "") $errors['global'] = "Nincs megadva felhasználónév!";
+      if (!isset($post["username"]) || $post["username"] == "") $errors['username'] = "Nincs megadva felhasználónév!";
+      if (!isset($post["password"]) || $post["password"] == "") $errors['password'] = "Nincs megadva jelszó!";
 
       $data = $post;
 
@@ -19,8 +19,8 @@
     function check_user($user_storage, $username, $password) {
       $users = $user_storage->findMany(function ($user) use ($username, $password) {
           return $user["username"] === $username && 
-              //password_verify($password, $user["password"]);
-              $user["password"] === $password; // Use plaintext
+              password_verify($password, $user["password"]);
+              //$user["password"] === $password; // Don't use plaintext
       });
       return count($users) === 1 ? array_shift($users) : NULL;
     }
