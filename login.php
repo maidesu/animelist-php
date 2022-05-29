@@ -8,8 +8,9 @@
     }
 
     function validate($post, &$data, &$errors) {
-      // username, password not empty
-      // ...
+      if (!isset($post["password"]) || $post["password"] == "") $errors['global'] = "Nincs megadva jelszó!";
+      if (!isset($post["username"]) || $post["username"] == "") $errors['global'] = "Nincs megadva felhasználónév!";
+
       $data = $post;
 
       return count($errors) === 0;
@@ -37,7 +38,7 @@
       if (validate($_POST, $data, $errors)) {
           $logged_in_user = check_user($user_storage, $data['username'], $data['password']);
           if (!$logged_in_user) {
-            $errors['global'] = "Login error";
+            $errors['global'] = "Hibás felhasználónév vagy jelszó!";
           } else {
             login($logged_in_user);
             redirect('index.php');
