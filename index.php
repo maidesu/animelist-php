@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.css">
     <title>(Not) my anime list</title>
 </head>
+
 <body>
     <div class="header">
     <?php if (isset($_SESSION["user"])): ?>
@@ -24,7 +25,8 @@
         <div id="header-register"><a href="./register.php">Regisztráció</a></div>
     <?php endif; ?>
     </div>
-    <div class="main">
+
+    <div class="mainpage">
         <h1>(Nem) Az Én Anime Listám</h1>
         <p>Ez nem egy az 'Az Én Anime Listám' mintájára készült anime sorozatkövető weboldal.</p>
 

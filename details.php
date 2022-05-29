@@ -77,6 +77,7 @@
     <link rel="stylesheet" href="style.css">
     <title>(Not) my anime list</title>
 </head>
+
 <body>
     <div class="header">
     <?php if (isset($_SESSION["user"])): ?>
@@ -84,7 +85,8 @@
     <?php endif; ?>
         <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
     </div>
-    <div>
+
+    <div class="details">
         <table>
             <tr>
                 <td rowspan="4"><img src="<?= $series["cover"] ?>" alt="<?= $series["title"] ?>"></td>
@@ -106,7 +108,7 @@
         </table>
     </div>
 
-    <div>
+    <div class="episodes">
         <table>
             <tr>
                 <th>#</th>
