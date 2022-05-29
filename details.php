@@ -24,6 +24,12 @@
     <title>(Not) my anime list</title>
 </head>
 <body>
+    <div class="header">
+    <?php if (isset($_SESSION["user"])): ?>
+        <div id="header-user">Bejelentkezett, mint <?= $_SESSION["user"]["username"] ?></div>
+    <?php endif; ?>
+        <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
+    </div>
     <div>
         <table>
             <tr>

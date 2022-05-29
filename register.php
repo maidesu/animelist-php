@@ -64,6 +64,9 @@
 </head>
 
 <body>
+<div class="header">
+  <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
+</div>
 <?php if (isset($errors['global'])) : ?>
   <p><span class="error"><?= $errors['global'] ?></span></p>
 <?php endif; ?>
