@@ -5,7 +5,9 @@
         "email": "actualadmin@actualelte.hu",
         "password": "admin",
         "watched": {
-            "1": "2"
+            "1": "2",
+            "3": "1",
+            "2": "1"
         },
         "isadmin": 1
     },
@@ -15,7 +17,7 @@
         "email": "user1@outgoggle.com",
         "password": "user321",
         "watched": {
-            "1": "1",
+            "1": "3",
             "2": "2"
         },
         "isadmin": 0

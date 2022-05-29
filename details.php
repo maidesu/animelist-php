@@ -1,11 +1,17 @@
 <?php
-    include('seriesstorage.php');
+    include('filestorage.php');
 
     session_start();
     $series_storage = new SeriesStorage();
+    $user_storage = new UserStorage();
 
     if (!isset($_GET["id"]) || $_GET["id"] === "" || is_null($series_storage->findById($_GET["id"]))) { http_response_code(404); return; }
     $series = $series_storage->findById($_GET["id"]);
+
+    if (isset($_GET["viewed"]) && is_numeric($_GET["viewed"])) {
+        $_SESSION["user"]["watched"][$_GET["id"]] = $_GET["viewed"];
+        $user_storage->update($_SESSION["user"]["id"], $_SESSION["user"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +65,10 @@
                     <td><?= $details["date"] ?></td>
                     <td><?= $details["plot"] ?></td>
                     <td><?= $details["rating"] ?></td>
-                    <?php if (isset($_SESSION["user"])) :?><td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td><?php endif; ?>
+                    <?php if (isset($_SESSION["user"]) &&
+                        isset($_SESSION["user"]["watched"][$_GET["id"]]) &&
+                        $i === $_SESSION["user"]["watched"][$_GET["id"]] + 1 ||
+                        ($i === 1 && !isset($_SESSION["user"]["watched"][$_GET["id"]]))) :?><td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td><?php endif; ?>
                 </tr>
             <?php endforeach; ?>
         </table>

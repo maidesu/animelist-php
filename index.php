@@ -1,5 +1,5 @@
 <?php
-    include('seriesstorage.php');
+    include('filestorage.php');
 
     session_start();
     $series_storage = new SeriesStorage();
