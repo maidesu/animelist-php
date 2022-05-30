@@ -163,7 +163,7 @@
                         <td>
                             <textarea name="plot" id="plot"><?= $_POST['plot'] ?? "" ?></textarea>
                             <?php if (isset($errors['plot'])) : ?>
-                                <span class="plot"><?= $errors['plot'] ?></span>
+                                <span class="error"><?= $errors['plot'] ?></span>
                             <?php endif; ?>
                         </td>
                         <td>

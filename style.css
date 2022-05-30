@@ -1,3 +1,12 @@
+a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
 .viewed {
 	background-color: green;
 }
@@ -11,7 +20,7 @@ tr:nth-child(odd) {
 }
 
 .content {
-	width: 100rem;
+	width: 72vw;
 	margin: auto;
 	display: block;
 	border: 1px solid #EBEBEB;
@@ -19,8 +28,18 @@ tr:nth-child(odd) {
 	border-bottom: 0;
 }
 
+.header {
+	background-color: #E1E7F5;
+	border-bottom: 1px solid #2E51A2;
+	font-weight: bold;
+}
+
 table {
 	width: 100%;
+}
+
+label {
+	font-size: 1.2rem;
 }
 
 #collection img {
