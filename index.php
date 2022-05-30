@@ -3,6 +3,60 @@
 
     session_start();
     $series_storage = new SeriesStorage();
+
+
+    function redirect($page) {
+        header("Location: ${page}");
+        exit();
+    }
+
+    function validate($post, &$data, &$errors) {
+        if (!isset($post["id"]) || $post["id"] == "") $errors['id'] = "Nincs megadva ID!";
+
+        if (!isset($post["title"]) || $post["title"] == "") $errors['title'] = "Nincs megadva cím!";
+
+        if (!isset($post["year"]) || $post["year"] == "") $errors['year'] = "Nincs megadva évszám!";
+        else if (!is_int($post["year"] + 0) || $post["year"] < 1900 || $post["year"] > 2022) $errors['year'] = "Az évszám 1900 és 2022 közti egész szám legyen!";
+
+        if (!isset($post["plot"]) || $post["plot"] == "") $errors['plot'] = "Nincs megadva leírás!";
+
+        if (!isset($post["cover"]) || $post["cover"] == "") $errors['cover'] = "Nincs megadva borító URL!";
+        else if (!filter_var($post["cover"], FILTER_VALIDATE_URL)) $errors['cover'] = "A borító URL érvénytelen!";
+
+
+        $data = $post;
+        return count($errors) === 0;
+    }
+
+    function series_exists($series_storage, $title) {
+        $series = $series_storage->findOne(['title' => $title]);
+        return !is_null($series);
+    }
+
+    function add_series($series_storage, $data) {
+        $series = [
+            "id" => $data['id'],
+            'year' => $data['year'],
+            'title' => $data['title'],
+            'plot' => $data['plot'],
+            'cover' => $data['cover'],
+            'episodes' => new ArrayObject()
+        ];
+        return $series_storage->add($series);
+    }
+
+    $errors = [];
+    $data = [];
+    if (count($_POST) > 0 && isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) {
+      if (validate($_POST, $data, $errors)) {
+          if (series_exists($series_storage, $data['title'])) {
+            $errors['global'] = "Series already exists";
+          } else {
+            add_series($series_storage, $data);
+            header("Refresh:0");
+          }
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +110,9 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <input type="text" name="date" id="date" value="<?= $_POST['date'] ?? "" ?>">
-                            <?php if (isset($errors['date'])) : ?>
-                                <span class="error"><?= $errors['date'] ?></span>
+                            <input type="text" name="year" id="year" value="<?= $_POST['year'] ?? "" ?>">
+                            <?php if (isset($errors['year'])) : ?>
+                                <span class="error"><?= $errors['year'] ?></span>
                             <?php endif; ?>
                         </td>
                         <td>
@@ -98,7 +152,7 @@
                     <td><img src="<?= $listing["cover"] ?>" alt="<?= $listing["title"] ?>"></td>
                     <td><a href="./details.php?id=<?= $listing["id"] ?>"><?= $listing["title"] ?></a></td>
                     <td><?= count($listing["episodes"]) ?></td>
-                    <td><?= $listing["episodes"][count($listing["episodes"])]["date"] ?></td>
+                    <td><?= isset($listing["episodes"][count($listing["episodes"])]["date"]) ? $listing["episodes"][count($listing["episodes"])]["date"] : "Nincs hozzáadott epizód" ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
