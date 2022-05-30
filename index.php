@@ -16,7 +16,7 @@
         if (!isset($post["title"]) || $post["title"] == "") $errors['title'] = "Nincs megadva cím!";
 
         if (!isset($post["year"]) || $post["year"] == "") $errors['year'] = "Nincs megadva évszám!";
-        else if (!is_int($post["year"] + 0) || $post["year"] < 1900 || $post["year"] > 2022) $errors['year'] = "Az évszám 1900 és 2022 közti egész szám legyen!";
+        else if (!filter_var($post["year"], FILTER_VALIDATE_INT) || $post["year"] < 1900 || $post["year"] > 2022) $errors['year'] = "Az évszám 1900 és 2022 közti egész szám legyen!";
 
         if (!isset($post["plot"]) || $post["plot"] == "") $errors['plot'] = "Nincs megadva leírás!";
 

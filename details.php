@@ -29,7 +29,7 @@
         if (!isset($post["plot"]) || $post["plot"] == "") $errors['plot'] = "Nincs megadva leírás!";
 
         if (!isset($post["rating"]) || $post["rating"] == "") $errors['rating'] = "Nincs megadva értékelés!";
-        else if (!is_float($post["rating"] + 0) || $post["rating"] < 0 || $post["rating"] > 10) $errors['rating'] = "Az értékelés 0 és 10 közti lebegőpontos szám legyen!";
+        else if (!filter_var($post["rating"], FILTER_VALIDATE_FLOAT) || $post["rating"] < 0 || $post["rating"] > 10) $errors['rating'] = "Az értékelés 0 és 10 közti lebegőpontos szám legyen!";
 
         $data = $post;
         return count($errors) === 0;
