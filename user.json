@@ -4,9 +4,10 @@
         "email": "actualadmin@actualelte.hu",
         "password": "$2y$10$J56ONs6IeNJkw885eEiSOuUIG.qzS7VCKuXfLsSFlNIaUbNjWcsqq",
         "watched": {
-            "1": "2",
+            "1": "0",
             "2": "1",
-            "3": "1"
+            "3": "1",
+            "6295357378038": "5"
         },
         "isAdmin": 1,
         "id": "62939e891e461"

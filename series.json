@@ -67,5 +67,57 @@
                 "rating": 8.8
             }
         }
+    },
+    "6295357378038": {
+        "id": "6295357378038",
+        "year": "2017",
+        "title": "Eromanga Sensei",
+        "plot": "One year ago, Sagiri Izumi became step-siblings with Masamune Izumi. But the sudden death of their parents tears their new family apart, resulting in Sagiri becoming a shut-in which cut her off from her brother and society.",
+        "cover": "https:\/\/cdn.myanimelist.net\/images\/anime\/2\/86468l.jpg",
+        "episodes": {
+            "1": {
+                "id": "1",
+                "date": "2017-04-09",
+                "title": "My Little Sister, and the Sealed Room",
+                "plot": "Masamune Izumi is a high school student also working as a light novel author. He works with a mysterious illustrator who draws really erotic art for his light novels. In the midst of trying to deal with school and his shut-in sister, he discovers the identity behind this Eromanga-sensei!",
+                "rating": "7.7"
+            },
+            "2": {
+                "id": "2",
+                "date": "2017-04-16",
+                "title": "Class Rep with a Normie Life, and a Fearless Fairy",
+                "plot": "Megumi Jinno, the class representative for Sagiri's class, shows up at the Izumi residence with no prior warning. Her mission is to \"take Sagiri to school.\" How will Sagiri and Masamune handle the situation? Afterwards, Masamune runs into a mystical fairy in a pink dress...",
+                "rating": "7.9"
+            },
+            "3": {
+                "id": "3",
+                "date": "2017-04-23",
+                "title": "Buck Naked Mansion and the Fallen Master",
+                "plot": "The Izumi House's empty mansion next door has rumors of being cursed because of continuous misfortunes. But what happens when Sagiri starts hearing piano music coming from the supposed empty mansion?! And how will Masamune handle this Fallen Master?",
+                "rating": "8.0"
+            },
+            "4": {
+                "id": "4",
+                "date": "2017-04-30",
+                "title": "Eromanga-sensei",
+                "plot": "After observing the younger and more popular author, Elf Yamada, work on her novel, Masamune and Elf become a little closer. Sagiri notices this, and gets suspicious of their relationship, despite Masamune saying that he and Yamada-san don't get along at all. Regardless of their argument over this matter, Masamune begins working on his \"ultimate light novel\"!",
+                "rating": "8.0"
+            },
+            "5": {
+                "id": "5",
+                "date": "2017-05-07",
+                "title": "Let's Plan a Light-novel with your Little Sister",
+                "plot": "Motivated by Masamune's manuscript, Sagiri puts effort into getting a little closer to Masamune, despite the awkwardness. Both of them are now working towards making the manuscript into a book, starting with the project proposal. In the midst of all this, Elf sends an emergency text message to Masamune!?",
+                "rating": "7.9"
+            }
+        }
+    },
+    "6295359d071f4": {
+        "id": "6295359d071f4",
+        "year": "2022",
+        "title": "Kanojo, Okarishimasu Season 2",
+        "plot": "Second season of Kanojo, Okarishimasu.",
+        "cover": "https:\/\/cdn.myanimelist.net\/images\/anime\/1427\/120522l.jpg",
+        "episodes": []
     }
 }
