@@ -30,6 +30,62 @@
         <h1>(Nem) Az Én Anime Listám</h1>
         <p>Ez nem egy az 'Az Én Anime Listám' mintájára készült anime sorozatkövető weboldal.</p>
 
+        <?php if (isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) :?>
+            <h2>Sorozat hozzáadása</h2>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Cím</th>
+                    <th>Évjárat</th>
+                    <th>Leírás</th>
+                    <th>Borító</th>
+                </tr>
+                <tr>
+                    <form action="" method="post" novalidate>
+                        <td>
+                            <input type="text" name="id" id="id" value="<?= $_POST['id'] ?? "" ?>">
+                            <?php if (isset($errors['id'])) : ?>
+                                <span class="error"><?= $errors['id'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="title" id="title" value="<?= $_POST['title'] ?? "" ?>">
+                            <?php if (isset($errors['title'])) : ?>
+                                <span class="error"><?= $errors['title'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="date" id="date" value="<?= $_POST['date'] ?? "" ?>">
+                            <?php if (isset($errors['date'])) : ?>
+                                <span class="error"><?= $errors['date'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <textarea name="plot" id="plot"><?= $_POST['plot'] ?? "" ?></textarea>
+                            <?php if (isset($errors['plot'])) : ?>
+                                <span class="plot"><?= $errors['plot'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="cover" id="cover" value="<?= $_POST['cover'] ?? "" ?>">
+                            <?php if (isset($errors['cover'])) : ?>
+                                <span class="error"><?= $errors['cover'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <button type="submit">Hozzáadás</button>
+                        </td>
+                    </form>
+                    <?php if (isset($errors['global'])) : ?>
+                        <p><span class="error"><?= $errors['global'] ?></span></p>
+                    <?php endif; ?>
+                </tr>
+            </table>
+        <?php endif; ?>
+
+        <h2>Összes sorozat</h2>
+
         <table>
             <tr>
                 <th>Borító</th>
@@ -67,9 +123,5 @@
             </table>
         <?php endif; ?>
     </div>
-
-    <!-- PHP CSAK ADMIN FORM HOZZÁADÁSHOZ -->
-    <form action="" novalidate>
-    </form>
 </body>
 </html>
