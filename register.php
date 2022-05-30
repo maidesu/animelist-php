@@ -64,47 +64,49 @@
 </head>
 
 <body>
-<div class="header">
-  <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
-</div>
+<div class="content">
+  <div class="header">
+    <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
+  </div>
 
-<div class="registerform">
-  <?php if (isset($errors['global'])) : ?>
-    <p><span class="error"><?= $errors['global'] ?></span></p>
-  <?php endif; ?>
-  <form action="" method="post" novalidate>
-    <div>
-      <label for="username">Felhasználónév: </label><br>
-      <input type="text" name="username" id="username" value="<?= $_POST['username'] ?? "" ?>">
-      <?php if (isset($errors['username'])) : ?>
-        <span class="error"><?= $errors['username'] ?></span>
-      <?php endif; ?>
-    </div>
-    <div>
-      <label for="email">Email cím: </label><br>
-      <input type="email" name="email" id="email" value="<?= $_POST['email'] ?? "" ?>">
-      <?php if (isset($errors['email'])) : ?>
-        <span class="error"><?= $errors['email'] ?></span>
-      <?php endif; ?>
-    </div>
-    <div>
-      <label for="password">Jelszó: </label><br>
-      <input type="password" name="password" id="password">
-      <?php if (isset($errors['password'])) : ?>
-        <span class="error"><?= $errors['password'] ?></span>
-      <?php endif; ?>
-    </div>
-    <div>
-      <label for="password_rp">Jelszó még egyszer: </label><br>
-      <input type="password" name="password_rp" id="password_rp">
-      <?php if (isset($errors['password_rp'])) : ?>
-        <span class="error"><?= $errors['password_rp'] ?></span>
-      <?php endif; ?>
-    </div>
-    <div>
-      <button type="submit">Regisztráció</button>
-    </div>
-  </form>
+  <div class="registerform">
+    <?php if (isset($errors['global'])) : ?>
+      <p><span class="error"><?= $errors['global'] ?></span></p>
+    <?php endif; ?>
+    <form action="" method="post" novalidate>
+      <div>
+        <label for="username">Felhasználónév: </label><br>
+        <input type="text" name="username" id="username" value="<?= $_POST['username'] ?? "" ?>">
+        <?php if (isset($errors['username'])) : ?>
+          <span class="error"><?= $errors['username'] ?></span>
+        <?php endif; ?>
+      </div>
+      <div>
+        <label for="email">Email cím: </label><br>
+        <input type="email" name="email" id="email" value="<?= $_POST['email'] ?? "" ?>">
+        <?php if (isset($errors['email'])) : ?>
+          <span class="error"><?= $errors['email'] ?></span>
+        <?php endif; ?>
+      </div>
+      <div>
+        <label for="password">Jelszó: </label><br>
+        <input type="password" name="password" id="password">
+        <?php if (isset($errors['password'])) : ?>
+          <span class="error"><?= $errors['password'] ?></span>
+        <?php endif; ?>
+      </div>
+      <div>
+        <label for="password_rp">Jelszó még egyszer: </label><br>
+        <input type="password" name="password_rp" id="password_rp">
+        <?php if (isset($errors['password_rp'])) : ?>
+          <span class="error"><?= $errors['password_rp'] ?></span>
+        <?php endif; ?>
+      </div>
+      <div>
+        <button type="submit">Regisztráció</button>
+      </div>
+    </form>
+  </div>
 </div>
 </body>
 </html>

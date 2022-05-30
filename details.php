@@ -79,108 +79,110 @@
 </head>
 
 <body>
-    <div class="header">
-    <?php if (isset($_SESSION["user"])): ?>
-        <div id="header-user">Bejelentkezett, mint <?= $_SESSION["user"]["username"] ?></div>
-    <?php endif; ?>
-        <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
-    </div>
+    <div class="content">
+        <div class="header">
+        <?php if (isset($_SESSION["user"])): ?>
+            <div id="header-user">Bejelentkezett, mint <?= $_SESSION["user"]["username"] ?></div>
+        <?php endif; ?>
+            <div id="header-back"><a href="./index.php">Vissza a főoldalra</a></div>
+        </div>
 
-    <div class="details">
-        <table>
-            <tr>
-                <td rowspan="4"><img src="<?= $series["cover"] ?>" alt="<?= $series["title"] ?>"></td>
-                <th>Cím</th>
-                <td><?= $series["title"] ?></td>
-            </tr>
-            <tr>
-                <th>Évjárat</th>
-                <td><?= $series["year"] ?></td>
-            </tr>
-            <tr>
-                <th>Leírás</th>
-                <td><?= $series["plot"] ?></td>
-            </tr>
-            <tr>
-                <th>Epizódok száma</th>
-                <td><?= count($series["episodes"]) ?></td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="episodes">
-        <table>
-            <tr>
-                <th>#</th>
-                <th>Epizód címe</th>
-                <th>Dátum</th>
-                <th>Leírás</th>
-                <th>Értékelés</th>
-                <?php if (isset($_SESSION["user"])) :?><th>Megnéztem</th><?php endif; ?>
-            </tr>
-            <?php foreach ($series["episodes"] as $i=>$details): ?>
+        <div class="details">
+            <table id="detailed">
                 <tr>
-                    <td <?php if(isset($_SESSION["user"]) &&
-                        isset($_SESSION["user"]["watched"][$_GET["id"]]) &&
-                        $i <= $_SESSION["user"]["watched"][$_GET["id"]]) echo 'class="viewed"'; ?>><?= $i ?></td>
-                    <td><?= $details["title"] ?></td>
-                    <td><?= $details["date"] ?></td>
-                    <td><?= $details["plot"] ?></td>
-                    <td><?= $details["rating"] ?></td>
-                    <?php
-                        if (isset($_SESSION["user"]) && // Valid user
-                        isset($_SESSION["user"]["watched"][$_GET["id"]]) && // Has the show indexed in user.json
-                        ($i === $_SESSION["user"]["watched"][$_GET["id"]] + 1) || // Place button next to first unwatched episode
-                        (isset($_SESSION["user"]) && !isset($_SESSION["user"]["watched"][$_GET["id"]]) && $i === 1) // User is valid, but hasn't indexed show yet -> button to first episode
-                        ) :
-                    ?>
-                        <td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td>
+                    <td rowspan="4"><img src="<?= $series["cover"] ?>" alt="<?= $series["title"] ?>"></td>
+                    <th>Cím</th>
+                    <td><?= $series["title"] ?></td>
+                </tr>
+                <tr>
+                    <th>Évjárat</th>
+                    <td><?= $series["year"] ?></td>
+                </tr>
+                <tr>
+                    <th>Leírás</th>
+                    <td><?= $series["plot"] ?></td>
+                </tr>
+                <tr>
+                    <th>Epizódok száma</th>
+                    <td><?= count($series["episodes"]) ?></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="episodes">
+            <table>
+                <tr class="thead">
+                    <th>#</th>
+                    <th>Epizód címe</th>
+                    <th>Dátum</th>
+                    <th>Leírás</th>
+                    <th>Értékelés</th>
+                    <?php if (isset($_SESSION["user"])) :?><th>Megnéztem</th><?php endif; ?>
+                </tr>
+                <?php foreach ($series["episodes"] as $i=>$details): ?>
+                    <tr>
+                        <td <?php if(isset($_SESSION["user"]) &&
+                            isset($_SESSION["user"]["watched"][$_GET["id"]]) &&
+                            $i <= $_SESSION["user"]["watched"][$_GET["id"]]) echo 'class="viewed"'; ?>><?= $i ?></td>
+                        <td><?= $details["title"] ?></td>
+                        <td><?= $details["date"] ?></td>
+                        <td><?= $details["plot"] ?></td>
+                        <td><?= $details["rating"] ?></td>
+                        <?php
+                            if (isset($_SESSION["user"]) && // Valid user
+                            isset($_SESSION["user"]["watched"][$_GET["id"]]) && // Has the show indexed in user.json
+                            ($i === $_SESSION["user"]["watched"][$_GET["id"]] + 1) || // Place button next to first unwatched episode
+                            (isset($_SESSION["user"]) && !isset($_SESSION["user"]["watched"][$_GET["id"]]) && $i === 1) // User is valid, but hasn't indexed show yet -> button to first episode
+                            ) :
+                        ?>
+                            <td><a href="./details.php?id=<?= $series["id"] ?>&viewed=<?= $i ?>">+</a></td>
+                        <?php endif; ?>
+                    </tr>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) :?>
+                <tr>
+                    <form action="" method="post" novalidate>
+                        <td>
+                            <input type="text" name="id" id="id" value="<?= $_POST['id'] ?? "" ?>">
+                            <?php if (isset($errors['id'])) : ?>
+                                <span class="error"><?= $errors['id'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="title" id="title" value="<?= $_POST['title'] ?? "" ?>">
+                            <?php if (isset($errors['title'])) : ?>
+                                <span class="error"><?= $errors['title'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="date" id="date" value="<?= $_POST['date'] ?? "" ?>">
+                            <?php if (isset($errors['date'])) : ?>
+                                <span class="error"><?= $errors['date'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <textarea name="plot" id="plot"><?= $_POST['plot'] ?? "" ?></textarea>
+                            <?php if (isset($errors['plot'])) : ?>
+                                <span class="plot"><?= $errors['plot'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <input type="text" name="rating" id="rating" value="<?= $_POST['rating'] ?? "" ?>">
+                            <?php if (isset($errors['rating'])) : ?>
+                                <span class="error"><?= $errors['rating'] ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <button type="submit">Hozzáadás</button>
+                        </td>
+                    </form>
+                    <?php if (isset($errors['global'])) : ?>
+                        <p><span class="error"><?= $errors['global'] ?></span></p>
                     <?php endif; ?>
                 </tr>
-            <?php endforeach; ?>
-            <?php if (isset($_SESSION["user"]["isAdmin"]) && $_SESSION["user"]["isAdmin"] === 1) :?>
-            <tr>
-                <form action="" method="post" novalidate>
-                    <td>
-                        <input type="text" name="id" id="id" value="<?= $_POST['id'] ?? "" ?>">
-                        <?php if (isset($errors['id'])) : ?>
-                            <span class="error"><?= $errors['id'] ?></span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <input type="text" name="title" id="title" value="<?= $_POST['title'] ?? "" ?>">
-                        <?php if (isset($errors['title'])) : ?>
-                            <span class="error"><?= $errors['title'] ?></span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <input type="text" name="date" id="date" value="<?= $_POST['date'] ?? "" ?>">
-                        <?php if (isset($errors['date'])) : ?>
-                            <span class="error"><?= $errors['date'] ?></span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <textarea name="plot" id="plot"><?= $_POST['plot'] ?? "" ?></textarea>
-                        <?php if (isset($errors['plot'])) : ?>
-                            <span class="plot"><?= $errors['plot'] ?></span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <input type="text" name="rating" id="rating" value="<?= $_POST['rating'] ?? "" ?>">
-                        <?php if (isset($errors['rating'])) : ?>
-                            <span class="error"><?= $errors['rating'] ?></span>
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <button type="submit">Hozzáadás</button>
-                    </td>
-                </form>
-                <?php if (isset($errors['global'])) : ?>
-                    <p><span class="error"><?= $errors['global'] ?></span></p>
                 <?php endif; ?>
-            </tr>
-            <?php endif; ?>
-        </table>
+            </table>
+        </div>
     </div>
 </body>
 </html>

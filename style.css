@@ -1,3 +1,32 @@
 .viewed {
 	background-color: green;
 }
+
+.thead th {
+	background-color: #EBEBEB;
+}
+
+tr:nth-child(odd) {
+	background-color: #F6F6F6;
+}
+
+.content {
+	width: 100rem;
+	margin: auto;
+	display: block;
+	border: 1px solid #EBEBEB;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+table {
+	width: 100%;
+}
+
+#collection img {
+	width: 10rem;
+}
+
+#detailed img {
+	width: 26rem;
+}
