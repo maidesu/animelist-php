@@ -2,11 +2,11 @@
 
 > A watchlist written using only native PHP and JSON.
 
-### The goal of this project:
+## The goal of this project:
 
 Track which episodes of a series the users have watched. Provide with the ability to add brand new episodes and series altogether.
 
-### Additional
+## Additional
 
 - Store covers, ratings and syllabuses
 
